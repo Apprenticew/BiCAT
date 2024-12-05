@@ -17,10 +17,10 @@ parser.add_argument('--test', action='store_true', default=False)
 parser.add_argument('--model_path', default='./result/')  # 保存路径
 parser.add_argument('--folder_path_gray', default='./data1/Retrospective_train_cohort')
 parser.add_argument('--folder_test_path_gray', default='./data1/Retrospective_test_cohort')
-parser.add_argument('--folder_unlabel_path', default='../unlabeled/')
+parser.add_argument('--folder_unlabel_path', default='./unlabeled/')
 parser.add_argument('--folder_arbitrary_path', default='./data1/Prospective_test_cohort')
 parser.add_argument('--load_ssl_weights', action='store_true', default=False)
-parser.add_argument('--ssl_weights_path', default='./data/curr_iter_18720')
+parser.add_argument('--ssl_weights_path', default='./model_dict')
 
 parser.add_argument('--bsize', type=int, default=16)
 parser.add_argument('--num_iters', type=int, default=20000)
@@ -117,21 +117,7 @@ if __name__ == '__main__':
     if not os.path.exists(args.model_path):
         os.makedirs(args.model_path, exist_ok=True)
     # load()
-    save()
+    # save()
     main(args)
 
 
-def load_path(folder_path):
-    folder_path_gray = {}
-    categories = 4
-    if categories == 4:
-        for q in range(categories):
-            folder_path_cluster = []
-            folder_path = os.path.join(folder_path, "%s" % str(q + 1))
-            for file_name in os.listdir(folder_path):
-                image_path = os.path.join(folder_path, file_name)
-                folder_path_cluster.append(image_path)
-            folder_path_gray[q] = folder_path_cluster
-    data = [(k, v) for k, vs in folder_path_gray.items() for v in vs]
-
-    return data

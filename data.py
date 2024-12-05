@@ -213,7 +213,7 @@ def train_dl(args, ):
     test_dataloader = DataLoader(test_set, batch_size=16, shuffle=True, num_workers=8, drop_last=False)
     class_counts = [train_set.class_counts, test_set.class_counts]
 
-    return train_dataloader, unlabel_dataloader, [test_dataloader, ], class_counts
+    return train_dataloader, unlabel_dataloader, test_dataloader, class_counts
 
 
 def arbitraty_dl(args, have_lable=True, class_num=4, bs=False):
