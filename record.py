@@ -27,7 +27,6 @@ class Record:
         if args.test:
             self.model_path = os.path.join(args.model_path, args.ssl_weights_path.replace('/', '>'),
                                            os.path.basename(args.folder_arbitrary_path), )
-            os.makedirs(self.model_path, exist_ok=True)
         else:
             self.model_path = args.model_path
 
@@ -103,6 +102,7 @@ class Record:
         #     self.y_score.append(score_norma[:, 1])
 
     def write(self, curr_iter, bs=False):
+        os.makedirs(self.model_path, exist_ok=True)
         # self.eval_ind.summerize_accuracy()
         # self.eval_dict, self.k_acc = self.eval_ind.summerize_confusion_matrix(), self.eval_ind.k_acc[1]
         self.eval_dict = self.eval_ind.summerize_confusion_matrix(f1_type='weighted', weights=self.class_counts)

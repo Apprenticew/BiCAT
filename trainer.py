@@ -21,6 +21,7 @@ def trainer(model, train_dataloader, unlabel_dataloader, test_dataloader, class_
     # 日志信息保存路径
     logger = SummaryWriter(os.path.join(os.path.dirname(args.model_path), 'logger', os.path.basename(args.model_path)))
     class_counts = class_counts_all[0]
+    print(class_counts_all[:])
     record = Record(args, class_num=args.class_num, class_counts=class_counts_all[1])
     amp = nullcontext
     if AMP_ENABLED:
@@ -180,14 +181,14 @@ def trainer(model, train_dataloader, unlabel_dataloader, test_dataloader, class_
         if (curr_iter) % num_eval_iters == 0:
             save_dict = {
                 'model_state_dict': model.state_dict(),
-                'ema_state_dict': net.state_dict(),
-                'optimizer_state_dict': optimizer1.state_dict(),
-                'curr_iter': curr_iter,
+                # 'ema_state_dict': net.state_dict(),
+                # 'optimizer_state_dict': optimizer1.state_dict(),
+                # 'curr_iter': curr_iter,
                 'tau_t': tau_t.cpu(),
                 'p_t': p_t.cpu(),
-                'mask_ratio': mask_ratio.cpu(),
-                'mask_ratio_all': mask_ratio_all.cpu(),
-                'label_hist': label_hist.cpu(),
+                # 'mask_ratio': mask_ratio.cpu(),
+                # 'mask_ratio_all': mask_ratio_all.cpu(),
+                # 'label_hist': label_hist.cpu(),
             }
             torch.save(save_dict, os.path.join(args.model_path, 'curr_iter_%d' % curr_iter))
             print('parameter is loaded successfully,start validation...\n')
@@ -196,7 +197,7 @@ def trainer(model, train_dataloader, unlabel_dataloader, test_dataloader, class_
             # if curr_iter >= num_eval_iters * 20:
             #     ssl2 = True
             with torch.no_grad():
-                for i, y in enumerate(test_dataloader[0]):
+                for i, y in enumerate(test_dataloader):
                     inputs = y[0].to(device)
                     label = y[1].to(device)
                     score = model(inputs)

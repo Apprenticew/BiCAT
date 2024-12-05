@@ -1,6 +1,5 @@
 import os
 import gc
-import cv2
 import pathlib
 import seaborn as sns
 from sklearn.metrics import roc_auc_score
@@ -137,7 +136,7 @@ def tester(model, arbitraty_dataloader, args, class_counts=None, class_num=4, bs
             finally:
                 clear_all_gpu_memory()
 
-        record.write(0, bs=bs)
+        # record.write(0, bs=bs)
 
         pred_cluster = record.y_pred
         pred_cluster = [x + 1 for x in pred_cluster]
