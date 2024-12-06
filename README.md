@@ -1,8 +1,6 @@
 # BiCAT: An Effective Semi-supervised Deep Learning Model for BI-RADS-based Breast Cancer Screening in Asymptomatic Individuals
 
-**Hong-Han Wang1, Zhi-Jie Chen2, Chong-Yang Xu1, Li Gao2, Zi-Mo Wang1, Guan-Lin Mo1,
-Jia-Xiang Chen1, Wei-Chen Lin1, Jin-Peng Zhang1, Xiu-Li Dai2,
-Hu Ding1*, Yong-Liang Zhang2*
+**
 **
 
 
