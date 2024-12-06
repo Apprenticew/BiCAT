@@ -4,7 +4,7 @@
 **
 
 
-**Abstract:** DEarly ultrasound screening for breast cancer aims to assess risk in asymptomatic individuals using the 
+**Abstract:** Early ultrasound screening for breast cancer aims to assess risk in asymptomatic individuals using the 
 standardized Breast Imaging Reporting and Data System (BI-RADS) atlas, enabling more appropriate management recommendations. 
 Despite the transformative role of deep learning, the progress in medicine is often hindered by limited labeled training 
 data and a large imbalance between benign and malignant cases (especially for asymptomatic individuals). In this article, 
